@@ -1,0 +1,73 @@
+
+project:
+  type: website
+  output-dir: _build
+  preview:
+    port: 5554 # use the same port instead of a new one each time
+    browser: true
+
+website:
+  title: "Example documentation site"
+
+  site-url: https://s2t2.github.io/quarto-python-autodoc-template/
+  repo-url: https://github.com/s2t2/quarto-python-autodoc-template
+  repo-branch: main
+  repo-actions: [edit, issue, source]
+
+  search: true
+  page-navigation: true # adds buttons at bottom of page
+
+  navbar:
+    right:
+      - about.qmd
+
+  sidebar:
+    contents:
+      - href: index.qmd
+        text: Home
+
+      - section: "Documentation"
+        contents:
+          - href: python-example.qmd
+            title: "Python Markdown"
+          - href: demo-notebook.ipynb
+            title: "Python Notebook"
+          - href: reference/index.qmd
+            title: "Python Package Reference"
+
+      - text: "---"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-copy: true
+
+#
+# PYTHON PACKAGE AUTO-DOCUMENTATION
+#
+
+# https://machow.github.io/quartodoc/get-started/basic-docs.html
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  package: my_project
+  #version: "v1.0.1"
+
+  # directory relative to current (docs/)
+  dir: reference
+
+  #style: pkgdown
+
+  title: Function Reference
+
+  sections:
+    - title: Some functions
+      desc: Functions to exemplify auto documentation.
+      contents:
+        #- get_object        # function: quartodoc.get_object
+        #- ast.preview       # submodule func: quartodoc.ast.preview
+        #- MdRenderer        # class: quartodoc.MdRenderer
+        #- MdRenderer.render # method: quartodoc.MDRenderer.render
+        #- renderers         # module: quartodoc.renderers
+        - calculator.Calculator
+        - formatter.to_usd
